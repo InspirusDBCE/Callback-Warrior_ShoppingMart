@@ -8,14 +8,16 @@ app.config['SECRET_KEY'] = b'\xda\x96+\xccN\xadB3\xbf\x8d\x11>\xdd\x0fhn'
 db = SQLAlchemy(app)
 
 #--------------DATABASE-------------------------
-class buyer(db.Model):
-    _id = db.Column(db.Integer, primary_key=True)
+class Buyer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120),  nullable=False)
     password = db.Column(db.String(60), nullable=False)
     address = db.Column(db.String(255), nullable=False)
     phoneNo = db.Column(db.Integer(), nullable=False)
     pinCode = db.Column(db.Integer(), nullable=False)
+    CART = db.relationship("Cart")
+
 
     def __init__(self,name, email, password , address, phoneNo, pinCode):
         self.name = name
@@ -33,13 +35,25 @@ class Seller(db.Model):
     address = db.Column(db.String(255), nullable=False)
     phoneNo = db.Column(db.Integer(), nullable=False)
     companyName = db.Column(db.String(255), unique=True, nullable=False)
-
+    
     def __init__(self, name, email, password , address, phoneNo):
         self.name = name 
         self.email = email
         self.password = password
         self.address = address
         self.phoneNo = phoneNo
+
+class Cart (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    image = db.Column(db.String(120), nullable=False,default='default.jpg')
+    price = db.Column(db.Integer(), nullable=False, default=0)
+    buyer_id = db.Column(db.Integer, db.ForeignKey('buyer.id'),nullable=False)
+
+    def __init__(self,name,image,price):
+        self.name = name
+        self.image = image
+        self.price = price
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -53,12 +67,23 @@ class Products(db.Model):
         self.image = image
         self.price = price
         self.description = description
+    
+    def __repr__(self):
+        return '<image %r>' % self.image
+
 
 #--------------DATABASE-------------------------
 
 #---------------ROUTES--------------------------
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home():
+    product = Products.query.all()
+    if request.method == "GET":
+        if "search-bar" in request.form:
+            search = request.form["search-item"]
+            print(f"\n {search} \n")
+        if "cart-button" in request.form:
+            return redirect(url_for("cart"))
     return render_template("home.html")
 
 #LOGIN
@@ -69,7 +94,7 @@ def login():
             return redirect(url_for("create_account")) 
         email = request.form["email"]
         password = request.form["password"]
-        foundUser = buyer.query.filter_by(email=email, password=password).first()
+        foundUser = Buyer.query.filter_by(email=email, password=password).first()
         if foundUser:
             if "remember-me" in request.form:
                 session["email"] = email
@@ -101,13 +126,17 @@ def create_account():
                 phoneNo = request.form["phoneNo"] 
                 address = request.form["address"]
                 pincode = request.form["pincode"]
-                buyers = buyer(name, email, passowrd, address, phoneNo,pincode)
+                buyers = Buyer(name, email, passowrd, address, phoneNo,pincode)
                 db.session.add(buyers)
                 db.session.commit()
                 flash("Account sucessfully Created", "success")
                 return redirect(url_for("home"))
     else:
         return render_template("create_account.html")
+
+@app.route("/cart")
+def cart():
+    return render_template("Cart.html")
 
 #ERROR HANDLING
 @app.errorhandler(404)

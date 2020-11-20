@@ -16,7 +16,7 @@
             background-color: #f1f1f1;
         }
     </style>
-    <title>Home</title>
+    <title>Cart</title>
 </head>
 
 <body>
@@ -77,16 +77,14 @@
                         <i class="fa fa-search"></i>Search</button>
                     <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"
                         style="width:100px;border-radius:5px;">
-                        <a href="{{ url_for('cart')}}" style="color: black;">
                         <i class="fa fa-shopping-basket"></i> Basket</button>
-                        </a>
                 </form>
             </div>
         </nav>
     </div>
 
-    <!-- Image Slider -->
-    <div class="Imageslider">
+     <!-- Image Slider -->
+     <div class="Imageslider">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -95,24 +93,24 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ url_for('static', filename='Phone.jpg')}}" alt="First slide">
+                    <img class="d-block w-100" src="{{ url_for('static', filename='Oats.jpg')}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block" style="color: black;">
-                        <h5>Electronics</h5>
-                        <p>Your Vision, Our Future</p>
+                        <h5>Shopping-Mart</h5>
+                        <p>A company built for you.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ url_for('static', filename='Medicines.jpg')}}" alt="Second slide">
+                    <img class="d-block w-100" src="{{ url_for('static', filename='Electronic.jpg')}}" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Medicines</h5>
-                        <p>The Power to Heal</p>
+                        <h5>Shopping-Mart</h5>
+                        <p>We are here to do better.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ url_for('static', filename='Vegetables.jpg')}}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ url_for('static', filename='MarketVeg1.jpg')}}" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Vegetables</h5>
-                        <p>A place for veggies and fruits</p>
+                        <h5>Shopping-Mart</h5>
+                        <p>We listen to our customers.</p>
                     </div>
                 </div>
             </div>
@@ -127,72 +125,43 @@
         </div>
     </div>
 
-    <!-- Products Deck1 -->
-    <div class="container my-5">
-        <div class="card-deck">
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='Sony.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Sony XT</h5>
-                    <p class="card-text">Take a look at Sony Xperia TX detailed specifications and features. 
-                        Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">1000</a>
-                </div>
+    <!-- Product 1 -->
+    <div class="container my-4">
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Sony XT</h2>
+              <p class="lead">Take a look at Sony Xperia TX detailed specifications and features. 
+                Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
+            <h4 class="rupees" style="text-align:right;">Rs.10000</h4>
+                <button type="button" class="btn btn-outline-danger pull-right" style="margin-bottom:20px">Remove From Cart</button>
             </div>
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='lemons.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Nepali Oblong</h5>
-                    <p class="card-text">The commercial cultivation of this variety takes place in India with its roots in Assam. 
-                        This lemon variety has a smooth and glossy texture with medium acidity and very few or no seeds.
-                    </p>
-                    <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">100</a>
-                </div>
+            <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/200x200/auto" alt="200x200" src="{{ url_for('static', filename='Sony.jpg')}}">
             </div>
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='Tomato.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Pusa Sadabahar</h5>
-                    <p class="card-text">Another variety by Indian Agricultural Research Institute, introduced in 2004. 
-                        This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">50</a>
-                </div>
+          </div>
+          <hr>
+    </div>
+    <!-- Product 2 -->
+    <div class="container my-4">
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">Pusa Sadabahar</h2>
+              <p>Another variety by Indian Agricultural Research Institute, introduced in 2004. 
+                This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
+                <h4 class="rupees" style="text-align:right;">Rs.100</h4>
+                <button type="button" class="btn btn-outline-danger pull-right" style="margin-bottom:20px">Remove From Cart</button>
             </div>
-        </div>
+            <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/200x200/auto" alt="200x200" src="{{ url_for('static', filename='Tomato.jpg')}}">
+            </div>
+          </div>
+          <hr>
     </div>
 
-    <!-- Products Deck2 -->
-    <div class="container my-5">
-        <div class="card-deck">
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='Sony.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Sony XT</h5>
-                    <p class="card-text">Take a look at Sony Xperia TX detailed specifications and features. 
-                        Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">1000</a>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='lemons.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Nepali Oblong</h5>
-                    <p class="card-text">The commercial cultivation of this variety takes place in India with its roots in Assam. 
-                        This lemon variety has a smooth and glossy texture with medium acidity and very few or no seeds.
-                    </p>
-                    <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">100</a>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="{{ url_for('static', filename='Tomato.jpg')}}" alt="Card image cap">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Pusa Sadabahar</h5>
-                    <p class="card-text">Another variety by Indian Agricultural Research Institute, introduced in 2004. 
-                        This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Buy Now for Rs.<class="rupees">50</a>
-                </div>
-            </div>
-        </div>
+    <!-- Subtotal -->
+    <hr>
+    <div class="container-fluid my-4">
+        <h4 class="rupees" style="text-align:right;">Subtotal(Rs.<class="total">10050</class>)</h4>
     </div>
 
     <!-- Footer -->
