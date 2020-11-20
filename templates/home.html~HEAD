@@ -63,8 +63,6 @@
                             <p style="text-align: center;">Top Categories</p>
                             <a class="dropdown-item" href="#">Phones</a>
                             <a class="dropdown-item" href="#">Speakers</a>
-                            <a class="dropdown-item" href="#">Milk</a>
-                            <a class="dropdown-item" href="#">Snacks</a>
                             <a class="dropdown-item" href="#">Vegetables & Fruits</a>
                             <a class="dropdown-item" href="#">Clothes</a>
                             <a class="dropdown-item" href="#">Medicine</a>
