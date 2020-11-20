@@ -18,7 +18,7 @@
   <div class="container-fluid ">
     <!-- Background Image -->
     <img src="{{ url_for('static', filename='SignInBg.jpg')}}" class="img-fluid mx-auto d-block my-5" alt="Responsive image"
-      style="width:800px;box-shadow: 0px 9px 13px 5px;">
+      style="width:1600px; height:900px; box-shadow: 0px 9px 13px 5px;">
     <!-- Login Form & Alerts -->
     <div class="carousel-caption d-none d-md-block">
       <div class="container-fluid" style="width:300px;height:455px;color:black;">
@@ -39,15 +39,42 @@
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1"name="password" placeholder="Password">
+              <br>
+              <div class="form-group">
+            <label for="exampleInputPassword1">Phone/Mobile Number</label>
+            <input type="tel" class="form-control" id="phonenumber"name="password" placeholder="Phone/Mobile Number">
           </div>
-          <button type="submit" class="btn btn-primary" style="border-radius:20px; width:100px;">Sign UP</button>
+              
+              <div class="form-group">
+            <label for="exampleInputEmail1">Delivery Address</label>
+            <input type="text" class="form-control" id="deliveryadress" name="address" aria-describedby="emailHelp"
+              placeholder="Address">
+          </div>
+          
+        
+          <div class="form-group">
+            <label for="exampleInputPassword1">Pincode</label>
+            <input type="tel" class="form-control" id="pincode"name="pincode" placeholder="Pincode">
+          </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="border-radius:20px; width:100px;">Sign Up</button>
           <hr style="border-color: black;">
           <button class="btn btn-success" name="sign-in" style="border-radius:20px; width:230px;">Already Have a Account!!!</button>
         </form>
         <div class="container my-4">
           <!-- Alerts -->
-          <!-- <div class="alert alert-success" role="alert">Logged In Successfully!!</div> -->
-          <!-- <div class="alert alert-danger" role="alert">Email or Password Incorrect</div> -->
+          {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category in messages %}
+                {% if category == 'error' %} 
+                   <div class="alert alert-danger" role="alert">Email or Password Incorrect</div>
+                {% endif %}
+                {% if category == 'success' %} 
+                    <div class="alert alert-success" role="alert">Logged In Successfully!!</div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
         </div>
       </div>
     </div>
