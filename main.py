@@ -1,12 +1,8 @@
 from flask import Flask,render_template,url_for,request,session,redirect,flash
-# from flask_sqlalchemy import SQLAlchemy
-# import sqlite3
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Buyer.sqlite3'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = b'\xda\x96+\xccN\xadB3\xbf\x8d\x11>\xdd\x0fhn'
-# db = SQLAlchemy(app)
+
 
 #--------------DATABASE-------------------------
 
@@ -40,7 +36,7 @@ Cart = [
     {
         "name" : "Pusa Sadabahar",
         "description" : "Another variety by Indian Agricultural Research Institute, introduced in 2004. This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.",
-        "price" : 150
+        "price" : 130
     }
 ]
 
@@ -82,26 +78,6 @@ def sellerSignIn():
 @app.route("/sellerSignUp",methods=['POST', 'GET'])
 def sellerSignUp():
     return render_template("SellerSignUp.html")
-
-#CREATE_ACCOUNT
-# @app.route("/create_account", methods=["POST", "GET"])
-# def create_account():
-#     if request.method == "POST":
-#         if "sign-in" in request.form:
-#             return redirect(url_for("login"))
-#         else:
-#             if not request.form["email"] or not request.form["password"]:
-#                 flash("Please Enter all required fields", "error")
-#                 return redirect(url_for("create_account"))
-#             else:
-#                email = request.form["email"]
-#                password = request.form["password"]
-#                session["email"] = email
-#                session["password"] = password
-#                flash("Account sucessfully Created", "success")
-#                return redirect(url_for("home")) 
-#     else:
-#         return render_template("create_account.html")
 
 #CART
 @app.route("/cart", methods=["GET", "POST"])

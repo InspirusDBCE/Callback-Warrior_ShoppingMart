@@ -143,7 +143,7 @@
     <!-- Subtotal -->
     <hr>
     <div class="container-fluid my-4">
-        <h4 class="rupees" style="text-align:right;">Subtotal(Rs.<class="total">10050</class>)</h4>
+        <h4 class="rupees" style="text-align:right;">Subtotal(Rs.<class="total">{{ c[1]["price"] + c[0]["price"]}}</class>)</h4>
     </div>
     
     <!-- Seller Details -->
@@ -171,11 +171,11 @@
     </div>
     
     <!-- Alert -->
-    <!-- <div class="container">
+    <div class="container">
         <div class="alert alert-success text-center" role="alert">
             Ordered Successfully!!
         </div>
-    </div> -->
+    </div>
     
     <!-- Footer -->
     <Footer>
