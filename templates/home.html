@@ -117,32 +117,28 @@
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='Sony.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Sony XT</h5>
-                    <p class="card-text">Take a look at Sony Xperia TX detailed specifications and features. 
-                        Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                        <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                    <h5 class="card-title">{{ prod[0]["name"]}}</h5>
+                    <p class="card-text">{{prod[0]["description"]}}</p>
+                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto" name="mobile">Add to Cart</a>
+                        <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[0]["price"]}}</strong></p>
                 </div>
             </div>
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='lemons.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Nepali Oblong</h5>
-                    <p class="card-text">The commercial cultivation of this variety takes place in India with its roots in Assam. 
-                        This lemon variety has a smooth and glossy texture with medium acidity and very few or no seeds.
-                    </p>
-                    <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                    <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                    <h5 class="card-title">{{ prod[1]["name"]}}</h5>
+                    <p class="card-text">{{prod[1]["description"]}}</p>
+                    <a href="#" class="btn btn-primary btn-sm btn-block mt-auto" name="lemons">Add to Cart</a>
+                    <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[1]["price"]}}</strong></p>
                 </div>
             </div>
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='Tomato.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Pusa Sadabahar</h5>
-                    <p class="card-text">Another variety by Indian Agricultural Research Institute, introduced in 2004. 
-                        This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
-                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                        <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                    <h5 class="card-title">{{ prod[2]["name"]}}</h5>
+                    <p class="card-text">{{prod[2]["description"]}}</p>
+                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto" name="tomato">Add to Cart</a>
+                        <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[2]["price"]}}</strong></p>
                 </div>
             </div>
         </div>
@@ -154,32 +150,28 @@
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='Sony.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Sony XT</h5>
-                    <p class="card-text">Take a look at Sony Xperia TX detailed specifications and features. 
-                        Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
-                       <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                         <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                    <h5 class="card-title">{{ prod[0]["name"]}}</h5>
+                    <p class="card-text">{{prod[0]["description"]}}</p>
+                        <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
+                        <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[0]["price"]}}</strong></p>
                 </div>
             </div>
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='lemons.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Nepali Oblong</h5>
-                    <p class="card-text">The commercial cultivation of this variety takes place in India with its roots in Assam. 
-                        This lemon variety has a smooth and glossy texture with medium acidity and very few or no seeds.
-                    </p>
+                    <h5 class="card-title">{{ prod[1]["name"]}}</h5>
+                    <p class="card-text">{{prod[1]["description"]}}</p>
                     <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                    <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                    <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[1]["price"]}}</strong></p>
                 </div>
             </div>
             <div class="card">
                 <img class="card-img-top" src="{{ url_for('static', filename='Tomato.jpg')}}" alt="Card image cap">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Pusa Sadabahar</h5>
-                    <p class="card-text">Another variety by Indian Agricultural Research Institute, introduced in 2004. 
-                        This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
+                    <h5 class="card-title">{{ prod[2]["name"]}}</h5>
+                    <p class="card-text">{{prod[2]["description"]}}</p>
                         <a href="#" class="btn btn-primary btn-sm btn-block mt-auto">Add to Cart</a>
-                        <p class="rupees" style="text-align: end;"><strong>Rs.50</strong></p>
+                        <p class="rupees" style="text-align: end;"><strong>Rs.{{prod[2]["price"]}}</strong></p>
                 </div>
             </div>
         </div>

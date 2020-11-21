@@ -113,10 +113,9 @@
     <div class="container my-4">
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Sony XT</h2>
-              <p class="lead">Take a look at Sony Xperia TX detailed specifications and features. 
-                Product Features: Single Sim, 3G, Wi-Fi, HDMI, NFC. Dual Core, 1.5 GHz Processor.</p>
-            <h4 class="rupees" style="text-align:right;">Rs.10000</h4>
+              <h2 class="featurette-heading">{{ c[0]["name"]}}</h2>
+              <p class="lead">{{ c[0]["description"]}}</p>
+            <h4 class="rupees" style="text-align:right;">Rs.{{ c[0]["price"]}}</h4>
                 <button type="button" class="btn btn-outline-danger pull-right" style="margin-bottom:20px">Remove From Cart</button>
             </div>
             <div class="col-md-5 order-md-1">
@@ -129,10 +128,9 @@
     <div class="container my-4">
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Pusa Sadabahar</h2>
-              <p>Another variety by Indian Agricultural Research Institute, introduced in 2004. 
-                This cultivar produces higher yields of tomatoes.The fruits are oval in shape and have a shiny skin with a bright red color.</p>
-                <h4 class="rupees" style="text-align:right;">Rs.100</h4>
+              <h2 class="featurette-heading">{{ c[1]["name"]}}</h2>
+              <p>{{ c[1]["description"]}}</p>
+                <h4 class="rupees" style="text-align:right;">Rs.{{ c[1]["price"]}}</h4>
                 <button type="button" class="btn btn-outline-danger pull-right" style="margin-bottom:20px">Remove From Cart</button>
             </div>
             <div class="col-md-5 order-md-1">
