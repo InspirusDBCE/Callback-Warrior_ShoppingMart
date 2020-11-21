@@ -1,12 +1,12 @@
 from flask import Flask,render_template,url_for,request,session,redirect,flash
-from flask_sqlalchemy import SQLAlchemy
-import sqlite3
+# from flask_sqlalchemy import SQLAlchemy
+# import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Buyer.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = b'\xda\x96+\xccN\xadB3\xbf\x8d\x11>\xdd\x0fhn'
-db = SQLAlchemy(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Buyer.sqlite3'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SECRET_KEY'] = b'\xda\x96+\xccN\xadB3\xbf\x8d\x11>\xdd\x0fhn'
+# db = SQLAlchemy(app)
 
 #--------------DATABASE-------------------------
 
@@ -79,7 +79,7 @@ def customerSignUp():
 def sellerSignIn():
     return render_template("SellerSignIn.html")
 
-@app.route("/sellerSignIn",methods=['POST', 'GET'])
+@app.route("/sellerSignUp",methods=['POST', 'GET'])
 def sellerSignUp():
     return render_template("SellerSignIn.html")
 
