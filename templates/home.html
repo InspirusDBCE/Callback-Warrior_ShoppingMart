@@ -43,11 +43,11 @@
                             Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url_for('login')}}"><i class="fa fa-user-circle"></i> Sign In as Customer</a>
-                            <a class="dropdown-item" href="#"><i class="fa fa-address-card"></i> Sign In as Seller</a>
+                            <a class="dropdown-item" href="{{ url_for('customerSignIn')}}"><i class="fa fa-user-circle"></i> Sign In as Customer</a>
+                            <a class="dropdown-item" href="{{ url_for('customerSignUp')}}"><i class="fa fa-address-card"></i> Sign In as Seller</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('create_account')}}"><i class="fa fa-user-circle"></i> Sign Up as Customer</a>
-                            <a class="dropdown-item" href="#"><i class="fa fa-address-card"></i> Sign Up as Seller</a>
+                            <a class="dropdown-item" href="{{ url_for('sellerSignIn')}}"><i class="fa fa-user-circle"></i> Sign Up as Customer</a>
+                            <a class="dropdown-item" href="{{ url_for('sellerSignUp')}}"><i class="fa fa-address-card"></i> Sign Up as Seller</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Sign Out</a>
                         </div>

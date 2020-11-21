@@ -1,5 +1,6 @@
 from flask import Flask,render_template,url_for,request,session,redirect,flash
 from flask_sqlalchemy import SQLAlchemy
+import sqlite3
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Buyer.sqlite3'
@@ -8,6 +9,10 @@ app.config['SECRET_KEY'] = b'\xda\x96+\xccN\xadB3\xbf\x8d\x11>\xdd\x0fhn'
 db = SQLAlchemy(app)
 
 #--------------DATABASE-------------------------
+
+conn = sqlite3.connect("Buyer.sqlite3", check_same_thread=False)
+c = conn.cursor()
+
 class Buyer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
@@ -16,8 +21,6 @@ class Buyer(db.Model):
     address = db.Column(db.String(255), nullable=False)
     phoneNo = db.Column(db.Integer(), nullable=False)
     pinCode = db.Column(db.Integer(), nullable=False)
-    CART = db.relationship("Cart")
-
 
     def __init__(self,name, email, password , address, phoneNo, pinCode):
         self.name = name
@@ -43,18 +46,6 @@ class Seller(db.Model):
         self.address = address
         self.phoneNo = phoneNo
 
-class Cart (db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    image = db.Column(db.String(120), nullable=False,default='default.jpg')
-    price = db.Column(db.Integer(), nullable=False, default=0)
-    buyer_id = db.Column(db.Integer, db.ForeignKey('buyer.id'),nullable=False)
-
-    def __init__(self,name,image,price):
-        self.name = name
-        self.image = image
-        self.price = price
-
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120),unique=True,nullable=False)
@@ -77,14 +68,29 @@ class Products(db.Model):
 #---------------ROUTES--------------------------
 @app.route('/', methods=['POST', 'GET'])
 def home():
-    product = Products.query.all()
+    product = conn.execute("SELECT * FROM Products")
     if request.method == "GET":
         if "search-bar" in request.form:
             search = request.form["search-item"]
-            print(f"\n {search} \n")
         if "cart-button" in request.form:
             return redirect(url_for("cart"))
     return render_template("home.html")
+
+@app.route("/customerSignIn")
+def customerSignIn():
+    return render_template("CustomerSignIn.html")
+
+@app.route("/customerSignUp")
+def customerSignUp():
+    return render_template("CustomerSignUp.html")
+
+@app.route("/sellerSignIn")
+def sellerSignIn():
+    return render_template("SellerSignIn.html")
+
+@app.route("/sellerSignIn")
+def sellerSignUp():
+    return render_template("SellerSignIn.html")
 
 #LOGIN
 @app.route('/login', methods=["POST", "GET"])
@@ -94,18 +100,24 @@ def login():
             return redirect(url_for("create_account")) 
         email = request.form["email"]
         password = request.form["password"]
-        foundUser = Buyer.query.filter_by(email=email, password=password).first()
-        if foundUser:
+        foundUser = c.fetchall()
+        print(foundUser)
+        if not foundUser:
             if "remember-me" in request.form:
+                session["user"] = foundUser[1]
                 session["email"] = email
                 session["password"] = password
                 flash("Login Sucessfull", "sucess")
                 return redirect(url_for("home"))
             else:
+                session["user"] = foundUser[1]
+                session["email"] = email
                 flash("Login Sucessfull", "sucess")
                 return redirect(url_for("home")) 
         else:
             flash("Email or password is incorrect", "error")
+            print("error")
+            return redirect(url_for("login"))
     else:
         return render_template("Login.html")
 
@@ -122,20 +134,21 @@ def create_account():
             else:
                 name = request.form["name"]
                 email = request.form["email"]
-                passowrd = request.form["password"]
+                password = request.form["password"]
                 phoneNo = request.form["phoneNo"] 
                 address = request.form["address"]
                 pincode = request.form["pincode"]
-                buyers = Buyer(name, email, passowrd, address, phoneNo,pincode)
-                db.session.add(buyers)
-                db.session.commit()
+                conn.execute(f"INSERT INTO Buyer VALUES ({name}, '{email}', '{password}', '{address}', {phoneNo} ,{pincode})")
+                conn.commit()
                 flash("Account sucessfully Created", "success")
                 return redirect(url_for("home"))
     else:
         return render_template("create_account.html")
 
-@app.route("/cart")
+#CART
+@app.route("/cart", methods=["GET", "POST"])
 def cart():
+
     return render_template("Cart.html")
 
 #ERROR HANDLING
@@ -147,5 +160,4 @@ def not_found(e):
 #---------------ROUTES--------------------------
 
 if __name__ == '__main__':
-    db.create_all()
     app.run(debug=True)
